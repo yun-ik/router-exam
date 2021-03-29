@@ -1,10 +1,34 @@
 import React, { Component } from 'react';
 
+import {Grid, List, ListItem} from '@material-ui/core';
+import lessonsData from '../static-data/lessonsData';
+import { NavLink, Route } from 'react-router-dom';
+
+import Lesson from './Lesson';
+
 class Lessons extends Component {
 
   render(){
+
+    const link = lessonsData.map( lesson => {
+      return(
+        <ListItem component ='nav' key={lesson.id}>
+          <NavLink to={'/lessons/' + lesson.id}>
+            {lesson.name}
+          </NavLink>
+        </ListItem>
+      )
+    })
+
     return (
-      <div>Lessons List</div>
+      <Grid container spacing={2}>
+        <Grid item>
+          <List>{link}</List>
+        </Grid>
+        <Grid item>
+          <Route path='/lessons/:lessonId' component={Lesson}/>
+        </Grid>
+      </Grid>
     )
   }
 }

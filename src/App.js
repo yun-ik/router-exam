@@ -17,7 +17,6 @@ class App extends Component {
           <Route path='/lessons' component={Lessons}></Route>
           <Route component={() => <h2>Not Found!</h2>}></Route>
         </Switch>
-        
       </div>
     );
   } 
